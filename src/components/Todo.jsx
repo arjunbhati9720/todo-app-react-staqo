@@ -11,7 +11,9 @@ const Todo = () => {
     const [userEmail, setUserEmail] = useState('')
 
     useEffect(() => {
-        setUserEmail(JSON.parse(localStorage.getItem('login-user')).email)
+        if(localStorage.getItem('login-user')){
+            setUserEmail(JSON.parse(localStorage.getItem('login-user')).email);
+        }
         setStartTime(moment(new Date()).format('YYYY-MM-DDTHH:mm'))
         let allTodos = JSON.parse(localStorage.getItem(`signup-user-${userEmail}`))
         if (allTodos) {
